@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://dus4len36lrt7"]
+
+[ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="1_1b6ul"]
+[ext_resource type="Texture2D" uid="uid://dvi3xt63fig56" path="res://assets/images/background_cape.png" id="1_a6w3g"]
+[ext_resource type="Texture2D" uid="uid://cx8hr7tmniaye" path="res://assets/images/criancas_capa.png" id="2_wqveu"]
+[ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="4_wqveu"]
+[ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="5_pnkbs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv5f0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 61
+corner_radius_top_right = 61
+corner_radius_bottom_right = 61
+corner_radius_bottom_left = 61
+
+[sub_resource type="GDScript" id="GDScript_a6w3g"]
+resource_name = "NextButton"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page2.tscn\")
+"
+
+[node name="Page1" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("1_a6w3g")
+
+[node name="Background2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 399.0
+offset_right = 678.0
+offset_bottom = 987.0
+texture = ExtResource("2_wqveu")
+stretch_mode = 2
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 255.0
+offset_right = 727.0
+offset_bottom = 450.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kv5f0")
+
+[node name="Tittle" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 37.0
+offset_right = 606.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1b6ul")
+theme_override_font_sizes/font_size = 40
+text = "INDIVÍDUO E SOCIEDADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle2" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 101.0
+offset_right = 538.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1b6ul")
+theme_override_font_sizes/font_size = 20
+text = "Autor: Jonas Henrique da Silva Santos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle3" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 138.0
+offset_right = 358.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1b6ul")
+theme_override_font_sizes/font_size = 20
+text = "2025.2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 936.0
+offset_right = 745.0
+offset_bottom = 1007.0
+icon = ExtResource("4_wqveu")
+flat = true
+script = SubResource("GDScript_a6w3g")
+
+[node name="DesableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("5_pnkbs")
+flat = true
+script = SubResource("GDScript_a6w3g")
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
+[connection signal="pressed" from="DesableAudio" to="DesableAudio" method="_on_pressed"]

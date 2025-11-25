@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=3 uid="uid://b58pa7vchp2t8"]
+
+[ext_resource type="Texture2D" uid="uid://c46s10a0sjjll" path="res://assets/images/background_pg6.png" id="1_uamxo"]
+[ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_833oo"]
+[ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_6d0lk"]
+[ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_nk0u2"]
+[ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_tgs6x"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s6pic"]
+
+[sub_resource type="GDScript" id="GDScript_etpfj"]
+resource_name = "NextButton6"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page7.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_uamxo"]
+resource_name = "PrevButton6"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page5.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvad6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 19
+corner_radius_top_right = 19
+corner_radius_bottom_right = 19
+corner_radius_bottom_left = 19
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[node name="Page6" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = SubResource("CanvasTexture_s6pic")
+
+[node name="Background" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 27.0
+offset_right = 741.0
+offset_bottom = 1051.0
+texture = ExtResource("1_uamxo")
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 936.0
+offset_right = 745.0
+offset_bottom = 1007.0
+icon = ExtResource("2_833oo")
+flat = true
+script = SubResource("GDScript_etpfj")
+
+[node name="PrevButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 936.0
+offset_right = 105.0
+offset_bottom = 1007.0
+icon = ExtResource("3_6d0lk")
+flat = true
+script = SubResource("GDScript_uamxo")
+
+[node name="DisableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("4_nk0u2")
+flat = true
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 26.0
+offset_right = 692.0
+offset_bottom = 203.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dvad6")
+
+[node name="Content" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 611.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_tgs6x")
+theme_override_font_sizes/font_size = 16
+text = "Nossa identidade é como um tecido complexo, onde fios de quem somos (nossas paixões, sonhos, personalidade) se entrelaçam com os fios do que a sociedade espera de nós (nossos papéis, o grupo ao qual pertencemos, a cultura). Imagine que somos como um livro em branco. A sociedade nos dá a capa e as primeiras páginas, mas as histórias mais profundas e as cores vibrantes são o que nós mesmos escrevemos e revelamos."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="TextBox2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 222.0
+offset_right = 692.0
+offset_bottom = 289.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dvad6")
+
+[node name="Content" type="Label" parent="TextBox2"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 602.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_tgs6x")
+theme_override_font_sizes/font_size = 16
+text = "Arraste o dedo na pagina da direita para escrever a essência do indivíduo."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="Pagination" type="Label" parent="."]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 3.0
+offset_right = 764.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Pág. 6"
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
+[connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]

@@ -1,0 +1,197 @@
+[gd_scene load_steps=11 format=3 uid="uid://bknyx1jkbvrad"]
+
+[ext_resource type="Texture2D" uid="uid://dvi3xt63fig56" path="res://assets/images/background_cape.png" id="1_xx86n"]
+[ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="2_p84wv"]
+[ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_p84wv"]
+[ext_resource type="FontFile" uid="uid://nfof47cuchom" path="res://assets/fonts/Inter-VariableFont_opsz,wght.ttf" id="3_q75si"]
+[ext_resource type="Texture2D" uid="uid://b8ve1573tjwvt" path="res://assets/images/btn_home.png" id="4_63vm5"]
+[ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="5_q75si"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqfok"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 61
+corner_radius_top_right = 61
+corner_radius_bottom_right = 61
+corner_radius_bottom_left = 61
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63vm5"]
+bg_color = Color(0.019607844, 0.15294118, 0.16862746, 1)
+corner_radius_top_left = 61
+corner_radius_top_right = 61
+corner_radius_bottom_right = 61
+corner_radius_bottom_left = 61
+
+[sub_resource type="GDScript" id="GDScript_tqfok"]
+resource_name = "PrevButton8"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page7.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_lyq1y"]
+resource_name = "HomeButton"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page1.tscn\")
+"
+
+[node name="Page8" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("1_xx86n")
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 255.0
+offset_right = 727.0
+offset_bottom = 512.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tqfok")
+
+[node name="Tittle" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 23.0
+offset_right = 610.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_p84wv")
+theme_override_font_sizes/font_size = 40
+text = "INDIVÍDUO E SOCIEDADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle2" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 89.0
+offset_right = 544.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_p84wv")
+theme_override_font_sizes/font_size = 20
+text = "Autor: Jonas Henrique da Silva Santos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle3" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 118.0
+offset_right = 541.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_p84wv")
+theme_override_font_sizes/font_size = 20
+text = "Orientador: Prof. Ewerton Mendonça"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle4" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 147.0
+offset_right = 643.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_p84wv")
+theme_override_font_sizes/font_size = 20
+text = "Disciplina: Computação Gráfica e Sistemas Multimídia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle5" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 181.0
+offset_right = 349.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_p84wv")
+theme_override_font_sizes/font_size = 20
+text = "2025.2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBox2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 536.0
+offset_right = 723.0
+offset_bottom = 655.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_63vm5")
+
+[node name="Tittle" type="Label" parent="TextBox2"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 18.0
+offset_right = 637.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q75si")
+theme_override_font_sizes/font_size = 15
+text = "SILVA, R. S. indivíduo e sociedade: Introdução às duas principais dimensões sociologia. Disponível em: <https://cafecomsociologia.com/sociologia-individuo-e-sociedade-introducao/>."
+horizontal_alignment = 3
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PrevButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 936.0
+offset_right = 105.0
+offset_bottom = 1007.0
+icon = ExtResource("3_p84wv")
+flat = true
+script = SubResource("GDScript_tqfok")
+
+[node name="HomeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 936.0
+offset_right = 740.0
+offset_bottom = 1015.0
+icon = ExtResource("4_63vm5")
+flat = true
+script = SubResource("GDScript_lyq1y")
+
+[node name="DisableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("5_q75si")
+flat = true
+
+[connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]
+[connection signal="pressed" from="HomeButton" to="HomeButton" method="_on_pressed"]

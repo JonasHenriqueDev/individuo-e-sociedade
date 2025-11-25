@@ -1,0 +1,214 @@
+[gd_scene load_steps=14 format=3 uid="uid://b300on81picn"]
+
+[ext_resource type="Texture2D" uid="uid://dvi3xt63fig56" path="res://assets/images/background_cape.png" id="1_hlm4o"]
+[ext_resource type="Texture2D" uid="uid://bp863xdijgwd0" path="res://assets/images/criancas_pg1.png" id="2_e5jb8"]
+[ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="3_3l7jl"]
+[ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="4_ari61"]
+[ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_dy5hd"]
+[ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_e5jb8"]
+[ext_resource type="AudioStream" uid="uid://dvfoqui6cnryy" path="res://assets/audio/page2_content.ogg" id="7_dy5hd"]
+
+[sub_resource type="GDScript" id="GDScript_63ehy"]
+resource_name = "Page2Script"
+script/source = "extends Control
+
+@onready var narration_player = $NarrationPlayer 
+
+func _ready():
+	narration_player.play()
+
+func _exit_tree() -> void:
+	narration_player.stop()
+"
+
+[sub_resource type="GDScript" id="GDScript_ari61"]
+resource_name = "NarrationPlayerScript"
+script/source = "extends AudioStreamPlayer
+"
+
+[sub_resource type="GDScript" id="GDScript_3l7jl"]
+resource_name = "NextButton2"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page3.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_dy5hd"]
+resource_name = "PrevButton2"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page1.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_v88ug"]
+resource_name = "DisableAudioScript"
+script/source = "extends Button
+
+const MASTER_BUS_INDEX = 0
+
+func _ready():
+	_atualizar_texto()
+
+func _on_pressed() -> void:
+	var esta_mutado = AudioServer.is_bus_mute(MASTER_BUS_INDEX)
+	AudioServer.set_bus_mute(MASTER_BUS_INDEX, not esta_mutado)
+	
+	_atualizar_texto()
+
+func _atualizar_texto():
+	if AudioServer.is_bus_mute(MASTER_BUS_INDEX):
+		text = \"UNMUTE\"
+	else:
+		text = \"MUTE\"
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlm4o"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 19
+corner_radius_top_right = 19
+corner_radius_bottom_right = 19
+corner_radius_bottom_left = 19
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[node name="Page2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_63ehy")
+
+[node name="NarrationPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dy5hd")
+script = SubResource("GDScript_ari61")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("1_hlm4o")
+
+[node name="Background2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 399.0
+offset_right = 678.0
+offset_bottom = 987.0
+texture = ExtResource("2_e5jb8")
+stretch_mode = 2
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 936.0
+offset_right = 753.0
+offset_bottom = 1015.0
+icon = ExtResource("3_3l7jl")
+flat = true
+script = SubResource("GDScript_3l7jl")
+
+[node name="PrevButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 936.0
+offset_right = 105.0
+offset_bottom = 1007.0
+icon = ExtResource("4_ari61")
+flat = true
+script = SubResource("GDScript_dy5hd")
+
+[node name="DisableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("4_dy5hd")
+flat = true
+script = SubResource("GDScript_v88ug")
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 96.0
+offset_right = 692.0
+offset_bottom = 322.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hlm4o")
+
+[node name="Content" type="Label" parent="TextBox"]
+custom_minimum_size = Vector2(605, 204)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 614.0
+offset_bottom = 213.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_e5jb8")
+theme_override_font_sizes/font_size = 16
+text = "O processo de socialização é visto por alguns como uma série de atitudes controladoras do grupo, o qual estabelece severas sanções para os casos de desvio das regras. 
+
+Outros autores fazem questão de ressaltar que toda liberdade é uma liberdade social, vivida e estruturada conjuntamente. Nesse sentido, a socialização seria a forma com que os grupos humanizam os seus membros e lhes ensinam a desenvolver os seus potenciais."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="TextBox2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 337.0
+offset_right = 692.0
+offset_bottom = 415.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hlm4o")
+
+[node name="Content" type="Label" parent="TextBox2"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 614.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_e5jb8")
+theme_override_font_sizes/font_size = 16
+text = "Toque na mochila da criança e arraste o uniforme para ela. Ajude-a a se vestir para que ela possa se juntar aos colegas na escola."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="Pagination" type="Label" parent="."]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 3.0
+offset_right = 764.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Pág. 2"
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
+[connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]
+[connection signal="pressed" from="DisableAudio" to="DisableAudio" method="_on_pressed"]

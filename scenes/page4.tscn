@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfhwxiuorg487"]
+
+[ext_resource type="Texture2D" uid="uid://cc4mr0playkqs" path="res://assets/images/labirinto.png" id="1_eblq4"]
+[ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_blvi2"]
+[ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_5njrj"]
+[ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_bgkh2"]
+[ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_xdte5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5n6cl"]
+
+[sub_resource type="GDScript" id="GDScript_eblq4"]
+resource_name = "NextButton4"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page5.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_blvi2"]
+resource_name = "PrevButton4"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page3.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kuq3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 19
+corner_radius_top_right = 19
+corner_radius_bottom_right = 19
+corner_radius_bottom_left = 19
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[node name="Page4" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = SubResource("CanvasTexture_5n6cl")
+
+[node name="Background" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 261.0
+offset_right = 665.0
+offset_bottom = 824.0
+texture = ExtResource("1_eblq4")
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 936.0
+offset_right = 745.0
+offset_bottom = 1007.0
+icon = ExtResource("2_blvi2")
+flat = true
+script = SubResource("GDScript_eblq4")
+
+[node name="PrevButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 936.0
+offset_right = 105.0
+offset_bottom = 1007.0
+icon = ExtResource("3_5njrj")
+flat = true
+script = SubResource("GDScript_blvi2")
+
+[node name="DisableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("4_bgkh2")
+flat = true
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 26.0
+offset_right = 692.0
+offset_bottom = 156.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kuq3")
+
+[node name="Content" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 611.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xdte5")
+theme_override_font_sizes/font_size = 16
+text = "Apesar da influência social, os indivíduos possuem agência, ou seja, a capacidade de agir de forma independente e tomar decisões. A liberdade individual é a capacidade de expressar essa agência, desafiando ou reforçando as estruturas sociais existentes."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="TextBox2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 175.0
+offset_right = 692.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kuq3")
+
+[node name="Content" type="Label" parent="TextBox2"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 602.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xdte5")
+theme_override_font_sizes/font_size = 16
+text = "Incline o aparelho para guiar o rapaz pelo labirinto da vida. Ele encontra uma mulher, se forma na faculdade e tem filhos baseado no caminho que ele segue no labirinto."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="Pagination" type="Label" parent="."]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 3.0
+offset_right = 764.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Pág. 4"
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
+[connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]
