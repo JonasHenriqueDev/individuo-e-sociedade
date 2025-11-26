@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b58pa7vchp2t8"]
+[gd_scene load_steps=13 format=3 uid="uid://b58pa7vchp2t8"]
 
 [ext_resource type="Texture2D" uid="uid://c46s10a0sjjll" path="res://assets/images/background_pg6.png" id="1_uamxo"]
 [ext_resource type="PackedScene" uid="uid://dun53nkehjekn" path="res://tecido.tscn" id="2_6d0lk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_6d0lk"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_nk0u2"]
 [ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_tgs6x"]
+[ext_resource type="AudioStream" uid="uid://bv7vkpx63bghs" path="res://assets/audio/pag6.ogg" id="6_6d0lk"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s6pic"]
 
@@ -55,6 +56,56 @@ corner_radius_bottom_right = 19
 corner_radius_bottom_left = 19
 shadow_color = Color(0, 0, 0, 1)
 shadow_size = 2
+
+[sub_resource type="GDScript" id="GDScript_nk0u2"]
+resource_name = "DisableAudioScript"
+script/source = "extends Button
+
+const MASTER_BUS_INDEX = 0
+
+const ICON_ON_PATH = \"res://assets/images/desativar_audio.png\" 
+const ICON_OFF_PATH = \"res://assets/images/ativar_audio.png\"
+
+var icon_on: Texture2D
+var icon_off: Texture2D
+
+var narration_player: AudioStreamPlayer = null 
+
+func _ready():
+	icon_on = load(ICON_ON_PATH)
+	icon_off = load(ICON_OFF_PATH)
+	
+	AudioServer.set_bus_mute(MASTER_BUS_INDEX, true)
+	
+	_atualizar_icone()
+	
+	narration_player = get_parent().find_child(\"NarrationPlayer\", true)
+	
+	if narration_player and is_instance_valid(narration_player):
+		narration_player.stop()
+
+func _on_pressed() -> void:
+	var esta_mutado_antes = AudioServer.is_bus_mute(MASTER_BUS_INDEX)
+	var esta_mutado_agora = not esta_mutado_antes
+	
+	AudioServer.set_bus_mute(MASTER_BUS_INDEX, esta_mutado_agora)
+	
+	_atualizar_icone()
+	
+	if narration_player and is_instance_valid(narration_player):
+		if esta_mutado_antes == true and esta_mutado_agora == false:
+			narration_player.stop()
+			narration_player.play()
+		
+		elif esta_mutado_antes == false and esta_mutado_agora == true:
+			narration_player.stop()
+
+func _atualizar_icone():
+	if AudioServer.is_bus_mute(MASTER_BUS_INDEX):
+		icon = icon_off
+	else:
+		icon = icon_on
+"
 
 [node name="Page6" type="Control"]
 layout_mode = 3
@@ -119,32 +170,23 @@ icon = ExtResource("3_6d0lk")
 flat = true
 script = SubResource("GDScript_uamxo")
 
-[node name="DisableAudio" type="Button" parent="."]
-layout_mode = 0
-offset_left = 319.0
-offset_top = 970.0
-offset_right = 456.0
-offset_bottom = 1007.0
-icon = ExtResource("4_nk0u2")
-flat = true
-
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 75.0
 offset_top = 92.0
 offset_right = 692.0
-offset_bottom = 236.0
+offset_bottom = 327.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dvad6")
 
 [node name="Content" type="Label" parent="TextBox"]
 layout_mode = 0
 offset_left = 6.0
 offset_right = 611.0
-offset_bottom = 135.0
+offset_bottom = 297.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_tgs6x")
 theme_override_font_sizes/font_size = 16
-text = "Nossa identidade é como um tecido complexo. A base da tecelagem, feita de fios neutros, representa as expectativas da sociedade. Sobre essa base, a identidade é construída ativamente pelo entrelaçamento dos fios coloridos do indivíduo (nossas paixões, personalidade e escolhas). É este processo contínuo de tecelagem, que combina o neutro com o vibrante, que forma quem nós somos."
+text = "Nossa identidade não é dada, mas sim ativamente tecida. Pense nela como um tecido complexo. A base desse tecido é formada por fios neutros – eles representam as expectativas da sociedade, nossa cultura e os papéis que nos são impostos. Sobre essa estrutura, a identidade é construída pelo entrelaçamento constante dos fios coloridos do indivíduo – estes são as nossas paixões, escolhas, talentos e a nossa agência pessoal. É este processo contínuo de tecelagem, que combina o neutro com o vibrante, que forma ativamente a pessoa única que nós somos."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35
@@ -153,21 +195,21 @@ clip_text = true
 [node name="TextBox2" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 73.0
-offset_top = 257.0
+offset_top = 340.0
 offset_right = 690.0
-offset_bottom = 324.0
+offset_bottom = 407.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dvad6")
 
 [node name="Content" type="Label" parent="TextBox2"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 3.0
-offset_right = 602.0
-offset_bottom = 58.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 598.0
+offset_bottom = 60.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_tgs6x")
 theme_override_font_sizes/font_size = 16
-text = "Arraste o dedo sobre a silhueta da identidade. Sua ação irá desvendar e entrelaçar os diferentes fios coloridos."
+text = "Arraste o dedo para os lados várias vezes sobre a silhueta da identidade. Sua ação irá desvendar e entrelaçar os diferentes fios coloridos."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35
@@ -185,5 +227,19 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 12
 text = "Pág. 6"
 
+[node name="NarrationPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6d0lk")
+
+[node name="DisableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("4_nk0u2")
+flat = true
+script = SubResource("GDScript_nk0u2")
+
 [connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
 [connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]
+[connection signal="pressed" from="DisableAudio" to="DisableAudio" method="_on_pressed"]

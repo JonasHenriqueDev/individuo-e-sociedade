@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dus4len36lrt7"]
+[gd_scene load_steps=10 format=3 uid="uid://dus4len36lrt7"]
 
 [ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="1_1b6ul"]
 [ext_resource type="Texture2D" uid="uid://dvi3xt63fig56" path="res://assets/images/background_cape.png" id="1_a6w3g"]
 [ext_resource type="Texture2D" uid="uid://cx8hr7tmniaye" path="res://assets/images/criancas_capa.png" id="2_wqveu"]
 [ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="4_wqveu"]
+[ext_resource type="AudioStream" uid="uid://dhd6nml6x0lyb" path="res://assets/audio/capa.ogg" id="5_kv5f0"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="5_pnkbs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv5f0"]
@@ -30,6 +31,56 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://scenes/page2.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_kv5f0"]
+resource_name = "DisableAudioScript"
+script/source = "extends Button
+
+const MASTER_BUS_INDEX = 0
+
+const ICON_ON_PATH = \"res://assets/images/desativar_audio.png\" 
+const ICON_OFF_PATH = \"res://assets/images/ativar_audio.png\"
+
+var icon_on: Texture2D
+var icon_off: Texture2D
+
+var narration_player: AudioStreamPlayer = null 
+
+func _ready():
+	icon_on = load(ICON_ON_PATH)
+	icon_off = load(ICON_OFF_PATH)
+	
+	AudioServer.set_bus_mute(MASTER_BUS_INDEX, true)
+	
+	_atualizar_icone()
+	
+	narration_player = get_parent().find_child(\"NarrationPlayer\", true)
+	
+	if narration_player and is_instance_valid(narration_player):
+		narration_player.stop()
+
+func _on_pressed() -> void:
+	var esta_mutado_antes = AudioServer.is_bus_mute(MASTER_BUS_INDEX)
+	var esta_mutado_agora = not esta_mutado_antes
+	
+	AudioServer.set_bus_mute(MASTER_BUS_INDEX, esta_mutado_agora)
+	
+	_atualizar_icone()
+	
+	if narration_player and is_instance_valid(narration_player):
+		if esta_mutado_antes == true and esta_mutado_agora == false:
+			narration_player.stop()
+			narration_player.play()
+		
+		elif esta_mutado_antes == false and esta_mutado_agora == true:
+			narration_player.stop()
+
+func _atualizar_icone():
+	if AudioServer.is_bus_mute(MASTER_BUS_INDEX):
+		icon = icon_off
+	else:
+		icon = icon_on
 "
 
 [node name="Page1" type="Control"]
@@ -108,7 +159,10 @@ icon = ExtResource("4_wqveu")
 flat = true
 script = SubResource("GDScript_a6w3g")
 
-[node name="DesableAudio" type="Button" parent="."]
+[node name="NarrationPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kv5f0")
+
+[node name="DisableAudio" type="Button" parent="."]
 layout_mode = 0
 offset_left = 319.0
 offset_top = 970.0
@@ -116,7 +170,7 @@ offset_right = 456.0
 offset_bottom = 1007.0
 icon = ExtResource("5_pnkbs")
 flat = true
-script = SubResource("GDScript_a6w3g")
+script = SubResource("GDScript_kv5f0")
 
 [connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
-[connection signal="pressed" from="DesableAudio" to="DesableAudio" method="_on_pressed"]
+[connection signal="pressed" from="DisableAudio" to="DisableAudio" method="_on_pressed"]
