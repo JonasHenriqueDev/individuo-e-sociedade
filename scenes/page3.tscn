@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://nhqiubyg6nk5"]
+[gd_scene load_steps=10 format=3 uid="uid://nhqiubyg6nk5"]
 
-[ext_resource type="Texture2D" uid="uid://ed4tv68yiu5v" path="res://assets/images/background_pg3.png" id="1_eof0e"]
+[ext_resource type="Texture2D" uid="uid://dvi3xt63fig56" path="res://assets/images/background_cape.png" id="1_c7mpl"]
 [ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_c7mpl"]
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_3etha"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_ty1pl"]
 [ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_qifae"]
+[ext_resource type="PackedScene" uid="uid://b1ke7btxv5go0" path="res://scenes/argila.tscn" id="6_3etha"]
 
 [sub_resource type="GDScript" id="GDScript_eof0e"]
 resource_name = "NextButton3"
@@ -55,12 +56,25 @@ shadow_size = 2
 [node name="Page3" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_vertical_guides_ = [384.0]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 768.0
 offset_bottom = 1024.0
-texture = ExtResource("1_eof0e")
+texture = ExtResource("1_c7mpl")
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 32.0
+offset_right = 679.0
+offset_bottom = 77.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "IDENTIDADE: ARGILA E MOLDAGEM"
+horizontal_alignment = 1
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
@@ -93,10 +107,10 @@ flat = true
 
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 96.0
-offset_right = 692.0
-offset_bottom = 295.0
+offset_left = 67.0
+offset_top = 95.0
+offset_right = 697.0
+offset_bottom = 240.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mw5br")
 
 [node name="Content" type="Label" parent="TextBox"]
@@ -109,7 +123,7 @@ offset_bottom = 213.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_qifae")
 theme_override_font_sizes/font_size = 16
-text = "Desde o nosso nascimento, somos como um pedaço de argila macia, moldado pelas mãos invisíveis da sociedade – a família, a escola, os amigos e a cultura. Cada interação, cada regra, cada história que ouvimos, nos dá uma forma. Mas não somos apenas receptores! Nossas próprias ações, escolhas e ideias também deixam marcas nessa 'argila' coletiva, transformando o mundo ao nosso redor."
+text = "Imagine que nossa identidade é como um pedaço de argila maleável. Ela é constantemente moldada pelas \"mãos invisíveis\" da sociedade (família, escola, cultura ) e pelas nossas próprias ações, escolhas e ideias. Cada toque e decisão contribui para a forma única que nos tornamos."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35
@@ -117,10 +131,10 @@ clip_text = true
 
 [node name="TextBox2" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 313.0
-offset_right = 692.0
-offset_bottom = 372.0
+offset_left = 68.0
+offset_top = 259.0
+offset_right = 698.0
+offset_bottom = 318.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mw5br")
 
 [node name="Content" type="Label" parent="TextBox2"]
@@ -132,7 +146,7 @@ offset_bottom = 59.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_qifae")
 theme_override_font_sizes/font_size = 16
-text = "Arraste o dedo na argila para ajudar a moldar-la em uma forma diferente"
+text = "Toque várias vezes seguidas na argila até moldar-la em uma forma diferente."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35
@@ -149,6 +163,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 12
 text = "Pág. 3"
+
+[node name="Argila" parent="." instance=ExtResource("6_3etha")]
+position = Vector2(368, 603)
 
 [connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
 [connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]

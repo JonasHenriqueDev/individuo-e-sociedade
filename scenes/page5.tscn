@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1cwkm1jyuan8"]
+[gd_scene load_steps=14 format=3 uid="uid://d1cwkm1jyuan8"]
 
-[ext_resource type="Texture2D" uid="uid://bc87b6lditr04" path="res://assets/images/background_pg5.png" id="1_pvl4g"]
+[ext_resource type="Texture2D" uid="uid://i45syx7ccmk8" path="res://assets/images/background_lights.jpg" id="1_i8mpn"]
+[ext_resource type="Script" uid="uid://sextei2xfntg" path="res://scenes/page_5.gd" id="1_ulut3"]
 [ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_vsa34"]
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_i8mpn"]
+[ext_resource type="Texture2D" uid="uid://ba0d1mu4br8kx" path="res://assets/images/on.png" id="3_o451d"]
+[ext_resource type="PackedScene" uid="uid://dmeshdihjnqss" path="res://scenes/cabo_2.tscn" id="3_y3jct"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_y3jct"]
 [ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_o451d"]
+[ext_resource type="Texture2D" uid="uid://cqsum8oe1whio" path="res://assets/images/off.png" id="5_ulut3"]
+[ext_resource type="PackedScene" uid="uid://cwwufivj01mnx" path="res://scenes/cabo_1.tscn" id="7_o451d"]
 
 [sub_resource type="GDScript" id="GDScript_ulut3"]
 resource_name = "NextButton5"
@@ -54,12 +59,43 @@ shadow_size = 2
 [node name="Page5" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_ulut3")
+metadata/_edit_vertical_guides_ = [384.0]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 768.0
+offset_right = 769.0
 offset_bottom = 1024.0
-texture = ExtResource("1_pvl4g")
+texture = ExtResource("1_i8mpn")
+expand_mode = 4
+
+[node name="Cabo1" parent="Background" instance=ExtResource("7_o451d")]
+position = Vector2(-2, 30)
+
+[node name="Cabo2" parent="Background" instance=ExtResource("3_y3jct")]
+position = Vector2(486, 617)
+
+[node name="Off" type="Sprite2D" parent="Background"]
+position = Vector2(491, 583.5)
+texture = ExtResource("5_ulut3")
+
+[node name="On" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(283, 583.5)
+texture = ExtResource("3_o451d")
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 32.0
+offset_right = 679.0
+offset_bottom = 77.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "CONFLITO E COOPERAÇÃO"
+horizontal_alignment = 1
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
@@ -93,9 +129,9 @@ flat = true
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 75.0
-offset_top = 26.0
+offset_top = 85.0
 offset_right = 692.0
-offset_bottom = 177.0
+offset_bottom = 236.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tv1fi")
 
 [node name="Content" type="Label" parent="TextBox"]
@@ -115,9 +151,9 @@ clip_text = true
 [node name="TextBox2" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 75.0
-offset_top = 193.0
+offset_top = 249.0
 offset_right = 692.0
-offset_bottom = 260.0
+offset_bottom = 334.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tv1fi")
 
 [node name="Content" type="Label" parent="TextBox2"]
@@ -129,7 +165,7 @@ offset_bottom = 83.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_o451d")
 theme_override_font_sizes/font_size = 16
-text = "Utilizando dois dedos, arraste os cabos e conecte para ligar a lâmpada."
+text = "Imagine que cada um de nós é como um cabo, e só ao nos unirmos podemos gerar energia e acender uma luz que ilumine a todos. Utilizando dois dedos, arraste os cabos e conecte-os para ligar a lâmpada."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35

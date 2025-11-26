@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b58pa7vchp2t8"]
+[gd_scene load_steps=11 format=3 uid="uid://b58pa7vchp2t8"]
 
 [ext_resource type="Texture2D" uid="uid://c46s10a0sjjll" path="res://assets/images/background_pg6.png" id="1_uamxo"]
+[ext_resource type="PackedScene" uid="uid://dun53nkehjekn" path="res://tecido.tscn" id="2_6d0lk"]
 [ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_833oo"]
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_6d0lk"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_nk0u2"]
@@ -58,6 +59,7 @@ shadow_size = 2
 [node name="Page6" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_vertical_guides_ = [385.0]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -66,12 +68,36 @@ offset_bottom = 1024.0
 texture = SubResource("CanvasTexture_s6pic")
 
 [node name="Background" type="TextureRect" parent="Background"]
+visible = false
 layout_mode = 0
 offset_left = 31.0
 offset_top = 27.0
 offset_right = 741.0
 offset_bottom = 1051.0
 texture = ExtResource("1_uamxo")
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 210.0
+offset_right = 656.0
+offset_bottom = 950.0
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 32.0
+offset_right = 679.0
+offset_bottom = 77.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "IDENTIDADE: DESVENDAR CORES"
+horizontal_alignment = 1
+
+[node name="Tecido" parent="Background" instance=ExtResource("2_6d0lk")]
+position = Vector2(376, 627)
+scale = Vector2(2.62, 2.62)
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
@@ -105,9 +131,9 @@ flat = true
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 75.0
-offset_top = 26.0
+offset_top = 92.0
 offset_right = 692.0
-offset_bottom = 203.0
+offset_bottom = 236.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dvad6")
 
 [node name="Content" type="Label" parent="TextBox"]
@@ -118,7 +144,7 @@ offset_bottom = 135.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_tgs6x")
 theme_override_font_sizes/font_size = 16
-text = "Nossa identidade é como um tecido complexo, onde fios de quem somos (nossas paixões, sonhos, personalidade) se entrelaçam com os fios do que a sociedade espera de nós (nossos papéis, o grupo ao qual pertencemos, a cultura). Imagine que somos como um livro em branco. A sociedade nos dá a capa e as primeiras páginas, mas as histórias mais profundas e as cores vibrantes são o que nós mesmos escrevemos e revelamos."
+text = "Nossa identidade é como um tecido complexo. A base da tecelagem, feita de fios neutros, representa as expectativas da sociedade. Sobre essa base, a identidade é construída ativamente pelo entrelaçamento dos fios coloridos do indivíduo (nossas paixões, personalidade e escolhas). É este processo contínuo de tecelagem, que combina o neutro com o vibrante, que forma quem nós somos."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35
@@ -126,10 +152,10 @@ clip_text = true
 
 [node name="TextBox2" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 222.0
-offset_right = 692.0
-offset_bottom = 289.0
+offset_left = 73.0
+offset_top = 257.0
+offset_right = 690.0
+offset_bottom = 324.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dvad6")
 
 [node name="Content" type="Label" parent="TextBox2"]
@@ -137,11 +163,11 @@ layout_mode = 0
 offset_left = 9.0
 offset_top = 3.0
 offset_right = 602.0
-offset_bottom = 83.0
+offset_bottom = 58.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_tgs6x")
 theme_override_font_sizes/font_size = 16
-text = "Arraste o dedo na pagina da direita para escrever a essência do indivíduo."
+text = "Arraste o dedo sobre a silhueta da identidade. Sua ação irá desvendar e entrelaçar os diferentes fios coloridos."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35

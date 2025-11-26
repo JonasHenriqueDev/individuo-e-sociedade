@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://33nud3iv5cjv"]
+
+[ext_resource type="Script" uid="uid://intpeee0unai" path="res://camiseta.gd" id="1_mw61w"]
+[ext_resource type="Texture2D" uid="uid://cb18ipgyxb87" path="res://assets/images/camiseta.png" id="2_mw61w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yklig"]
+size = Vector2(68.726715, 87.78118)
+
+[node name="Camiseta" type="Node2D"]
+script = ExtResource("1_mw61w")
+
+[node name="Camiseta" type="Sprite2D" parent="."]
+position = Vector2(0, -0.23407173)
+scale = Vector2(0.23867479, 0.24822716)
+texture = ExtResource("2_mw61w")
+
+[node name="Area2D" type="Area2D" parent="Camiseta"]
+position = Vector2(-37.70821, -28.023817)
+scale = Vector2(2.255639, 2.0979035)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camiseta/Area2D"]
+position = Vector2(13.931084, 5.724866)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_yklig")
+
+[connection signal="area_entered" from="Camiseta/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Camiseta/Area2D" to="." method="_on_area_2d_input_event"]

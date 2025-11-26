@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckvkac4oupitn"]
+[gd_scene load_steps=12 format=3 uid="uid://ckvkac4oupitn"]
 
-[ext_resource type="VideoStream" uid="uid://cuxq8yi0vtjfk" path="res://assets/videos/domino_cortado.ogv" id="1_uvy6n"]
+[ext_resource type="VideoStream" uid="uid://dqq86iwugb23q" path="res://assets/videos/transformacoes_sociais.ogv" id="1_qjd2i"]
+[ext_resource type="Texture2D" uid="uid://dwdat0fa438oc" path="res://assets/images/thumb.png" id="2_0jc52"]
 [ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_qjd2i"]
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_0jc52"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_ks7rh"]
@@ -79,6 +80,7 @@ shadow_size = 2
 [node name="Page7" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_vertical_guides_ = [385.0]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -89,19 +91,49 @@ script = SubResource("GDScript_ks7rh")
 
 [node name="DominoVideo" type="VideoStreamPlayer" parent="Background"]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 309.0
-offset_right = 686.0
-offset_bottom = 753.0
-stream = ExtResource("1_uvy6n")
+offset_left = -1.0
+offset_top = 389.0
+offset_right = 769.0
+offset_bottom = 869.0
+stream = ExtResource("1_qjd2i")
 expand = true
 
 [node name="Play" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 319.0
-offset_top = 641.0
-offset_right = 432.0
-offset_bottom = 700.0
+offset_left = -5.999999
+offset_top = 394.00003
+offset_right = 854.0
+offset_bottom = 882.0
+scale = Vector2(0.91, 0.91)
+icon = ExtResource("2_0jc52")
+flat = true
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 32.0
+offset_right = 679.0
+offset_bottom = 77.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "TRANSFORMAÇÕES SOCIAIS"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 833.0
+offset_right = 208.0
+offset_bottom = 861.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gxaxi")
+theme_override_font_sizes/font_size = 16
+text = "Fonte: TikTok"
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
@@ -134,17 +166,18 @@ flat = true
 
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 26.0
-offset_right = 692.0
-offset_bottom = 186.0
+offset_left = 80.0
+offset_top = 92.0
+offset_right = 697.0
+offset_bottom = 252.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0pgst")
 
 [node name="Content" type="Label" parent="TextBox"]
 layout_mode = 0
 offset_left = 6.0
+offset_top = 4.0
 offset_right = 611.0
-offset_bottom = 164.0
+offset_bottom = 168.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_gxaxi")
 theme_override_font_sizes/font_size = 16
@@ -156,22 +189,22 @@ clip_text = true
 
 [node name="TextBox2" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 206.0
-offset_right = 693.0
-offset_bottom = 273.0
+offset_left = 77.0
+offset_top = 262.0
+offset_right = 694.0
+offset_bottom = 353.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0pgst")
 
 [node name="Content" type="Label" parent="TextBox2"]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 21.0
-offset_right = 536.0
-offset_bottom = 53.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 608.0
+offset_bottom = 91.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_gxaxi")
 theme_override_font_sizes/font_size = 16
-text = "Toque na primeira peça para iniciar o efeito dominó."
+text = "Toque na tela para iniciar um vídeo de um profissional na área comentando sobre Transformações Sociais no Brasil no início do século XX."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35

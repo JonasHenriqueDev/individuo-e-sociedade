@@ -1,11 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://b300on81picn"]
+[gd_scene load_steps=19 format=3 uid="uid://b300on81picn"]
 
 [ext_resource type="Texture2D" uid="uid://dvi3xt63fig56" path="res://assets/images/background_cape.png" id="1_hlm4o"]
-[ext_resource type="Texture2D" uid="uid://bp863xdijgwd0" path="res://assets/images/criancas_pg1.png" id="2_e5jb8"]
 [ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="3_3l7jl"]
+[ext_resource type="Texture2D" uid="uid://c1sg8d6sfpmle" path="res://assets/images/grupocriancas.png" id="3_b88r2"]
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="4_ari61"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_dy5hd"]
+[ext_resource type="PackedScene" uid="uid://cxjdjq0sffpn7" path="res://lixeira.tscn" id="4_v88ug"]
 [ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_e5jb8"]
+[ext_resource type="Texture2D" uid="uid://bgb220vt5tmdp" path="res://assets/images/boy.png" id="5_rre4x"]
+[ext_resource type="PackedScene" uid="uid://33nud3iv5cjv" path="res://camiseta.tscn" id="6_bcfwf"]
+[ext_resource type="PackedScene" uid="uid://obv1l581un05" path="res://calca.tscn" id="6_ksih4"]
+[ext_resource type="PackedScene" uid="uid://dyhfidsb45dit" path="res://bone_drag.tscn" id="6_v88ug"]
 [ext_resource type="AudioStream" uid="uid://dvfoqui6cnryy" path="res://assets/audio/page2_content.ogg" id="7_dy5hd"]
 
 [sub_resource type="GDScript" id="GDScript_63ehy"]
@@ -97,7 +102,10 @@ shadow_size = 2
 [node name="Page2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = SubResource("GDScript_63ehy")
+metadata/_edit_horizontal_guides_ = [-72.0]
+metadata/_edit_vertical_guides_ = [384.0]
 
 [node name="NarrationPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dy5hd")
@@ -109,14 +117,58 @@ offset_right = 768.0
 offset_bottom = 1024.0
 texture = ExtResource("1_hlm4o")
 
-[node name="Background2" type="TextureRect" parent="."]
+[node name="Label" type="Label" parent="Background"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 399.0
-offset_right = 678.0
-offset_bottom = 987.0
-texture = ExtResource("2_e5jb8")
-stretch_mode = 2
+offset_left = 146.0
+offset_top = 45.0
+offset_right = 186.0
+offset_bottom = 68.0
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 32.0
+offset_right = 679.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 32
+text = "SOCIALIZAÇÃO: CONTROLE DO GRUPO"
+horizontal_alignment = 1
+
+[node name="Background4" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 339.0
+offset_right = 820.0
+offset_bottom = 867.0
+texture = ExtResource("3_b88r2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lixeira" parent="Background/Background4" instance=ExtResource("4_v88ug")]
+position = Vector2(-9, 388)
+scale = Vector2(0.63, 0.63)
+
+[node name="Background3" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 448.0
+offset_right = 323.0
+offset_bottom = 800.0
+texture = ExtResource("5_rre4x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Calca" parent="Background/Background3" instance=ExtResource("6_ksih4")]
+position = Vector2(159.99998, 253)
+scale = Vector2(2.155, 2.155)
+
+[node name="Camiseta" parent="Background/Background3" instance=ExtResource("6_bcfwf")]
+position = Vector2(176.00002, 146)
+scale = Vector2(1.875, 1.875)
+
+[node name="Bone" parent="Background/Background3" instance=ExtResource("6_v88ug")]
+position = Vector2(175, 43)
+scale = Vector2(0.665, 0.665)
 
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 0
@@ -150,10 +202,10 @@ script = SubResource("GDScript_v88ug")
 
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 96.0
-offset_right = 692.0
-offset_bottom = 322.0
+offset_left = 71.0
+offset_top = 97.0
+offset_right = 697.0
+offset_bottom = 242.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hlm4o")
 
 [node name="Content" type="Label" parent="TextBox"]
@@ -166,9 +218,7 @@ offset_bottom = 213.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_e5jb8")
 theme_override_font_sizes/font_size = 16
-text = "O processo de socialização é visto por alguns como uma série de atitudes controladoras do grupo, o qual estabelece severas sanções para os casos de desvio das regras. 
-
-Outros autores fazem questão de ressaltar que toda liberdade é uma liberdade social, vivida e estruturada conjuntamente. Nesse sentido, a socialização seria a forma com que os grupos humanizam os seus membros e lhes ensinam a desenvolver os seus potenciais."
+text = "O processo de socialização é visto como uma série de atitudes controladoras. O grupo impõe normas de comportamento e aparência e estabelece severas sanções (punições) para os casos de desvio das regras. Esta imposição força o indivíduo a se conformar para garantir sua aceitação."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35
@@ -176,10 +226,10 @@ clip_text = true
 
 [node name="TextBox2" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 337.0
-offset_right = 692.0
-offset_bottom = 415.0
+offset_left = 69.0
+offset_top = 257.0
+offset_right = 699.0
+offset_bottom = 335.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hlm4o")
 
 [node name="Content" type="Label" parent="TextBox2"]
@@ -191,7 +241,7 @@ offset_bottom = 78.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_e5jb8")
 theme_override_font_sizes/font_size = 16
-text = "Toque na mochila da criança e arraste o uniforme para ela. Ajude-a a se vestir para que ela possa se juntar aos colegas na escola."
+text = "Ajude o rapaz a se integrar! Remova tocando e arrastando as peças de roupa que não seguem o padrão do grupo para a lixeira. Assim, ele poderá se vestir de acordo com as expectativas e ser aceito."
 horizontal_alignment = 3
 autowrap_mode = 2
 justification_flags = 35

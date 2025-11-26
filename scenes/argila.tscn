@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1ke7btxv5go0"]
+
+[ext_resource type="Texture2D" uid="uid://xvemtye7ecrx" path="res://assets/images/anim/argila_sprite.png" id="1_7fpm5"]
+[ext_resource type="Script" uid="uid://duj1m1ut2a6tb" path="res://scenes/argila.gd" id="1_clkoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clkoc"]
+atlas = ExtResource("1_7fpm5")
+region = Rect2(0, 0, 333, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxo6f"]
+atlas = ExtResource("1_7fpm5")
+region = Rect2(333, 0, 333, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cj2s"]
+atlas = ExtResource("1_7fpm5")
+region = Rect2(666, 0, 333, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb6wf"]
+atlas = ExtResource("1_7fpm5")
+region = Rect2(999, 0, 333, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2d8j"]
+atlas = ExtResource("1_7fpm5")
+region = Rect2(1332, 0, 333, 592)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ow4jr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clkoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxo6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cj2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb6wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2d8j")
+}],
+"loop": false,
+"name": &"argila",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8idxc"]
+size = Vector2(180, 233)
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_clkoc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ow4jr")
+animation = &"argila"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -2)
+shape = SubResource("RectangleShape2D_8idxc")

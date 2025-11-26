@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmeshdihjnqss"]
+
+[ext_resource type="Script" uid="uid://c0q1cxko5nam5" path="res://scenes/cabo_2.gd" id="1_yebyk"]
+[ext_resource type="Texture2D" uid="uid://d0c1708je4v58" path="res://assets/images/cabo2.png" id="2_yebyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o0eq"]
+size = Vector2(188, 302)
+
+[node name="Cabo2" type="Node2D"]
+script = ExtResource("1_yebyk")
+
+[node name="Cabo2" type="Sprite2D" parent="."]
+position = Vector2(317, 234)
+texture = ExtResource("2_yebyk")
+
+[node name="Cabo2Area" type="Area2D" parent="Cabo2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabo2/Cabo2Area"]
+position = Vector2(-100, -9)
+shape = SubResource("RectangleShape2D_7o0eq")
+
+[connection signal="area_entered" from="Cabo2/Cabo2Area" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Cabo2/Cabo2Area" to="." method="_on_area_2d_input_event"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxjdjq0sffpn7"]
+
+[ext_resource type="Texture2D" uid="uid://8u2w2uhm1lft" path="res://assets/images/trash.png" id="1_co5ca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6cg6"]
+size = Vector2(67.000046, 37.250008)
+
+[node name="Lixeira" type="Node2D"]
+
+[node name="Trash" type="Sprite2D" parent="."]
+position = Vector2(9.536743e-07, 2.000002)
+scale = Vector2(0.28679246, 0.28969598)
+texture = ExtResource("1_co5ca")
+
+[node name="TrashArea" type="Area2D" parent="Trash"]
+position = Vector2(-3.3253116e-06, -6.9037957)
+scale = Vector2(3.486842, 3.4518945)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash/TrashArea"]
+position = Vector2(3, -18.000002)
+scale = Vector2(0.99999934, 0.99999934)
+shape = SubResource("RectangleShape2D_l6cg6")
