@@ -22,6 +22,10 @@ window/size/viewport_height=1024
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 
+[input_devices]
+
+sensors/enable_accelerometer=true
+
 [rendering]
 
 renderer/rendering_method="mobile"

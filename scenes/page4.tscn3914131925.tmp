@@ -1,0 +1,250 @@
+[gd_scene load_steps=17 format=3 uid="uid://dfhwxiuorg487"]
+
+[ext_resource type="Texture2D" uid="uid://cmh0knkqdq5c7" path="res://assets/images/btn_avancar.png" id="2_blvi2"]
+[ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="3_5njrj"]
+[ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_bgkh2"]
+[ext_resource type="Script" uid="uid://celfljvqbs6bl" path="res://scenes/character_body_2d.gd" id="5_5njrj"]
+[ext_resource type="Texture2D" uid="uid://dcdrhuc0ycoib" path="res://assets/images/boymaze.png" id="5_eblq4"]
+[ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_xdte5"]
+[ext_resource type="PackedScene" uid="uid://ba6dauqv6poiu" path="res://scenes/mazetiles.tscn" id="6_blvi2"]
+[ext_resource type="Texture2D" uid="uid://bxoq6a5abdh7o" path="res://assets/images/family.png" id="8_bgkh2"]
+[ext_resource type="Texture2D" uid="uid://b2reemjm03u5b" path="res://assets/images/viagens.png" id="8_xdte5"]
+[ext_resource type="Texture2D" uid="uid://bwebcq3hk2d7b" path="res://assets/images/carreira.png" id="10_5n6cl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5n6cl"]
+
+[sub_resource type="GDScript" id="GDScript_eblq4"]
+resource_name = "NextButton4"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page5.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_blvi2"]
+resource_name = "PrevButton4"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/page3.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kuq3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 19
+corner_radius_top_right = 19
+corner_radius_bottom_right = 19
+corner_radius_bottom_left = 19
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blvi2"]
+radius = 19.235384
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdte5"]
+radius = 16.0
+
+[node name="Page4" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 768.0
+offset_bottom = 1025.0
+texture = SubResource("CanvasTexture_5n6cl")
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 936.0
+offset_right = 745.0
+offset_bottom = 1007.0
+icon = ExtResource("2_blvi2")
+flat = true
+script = SubResource("GDScript_eblq4")
+
+[node name="PrevButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 936.0
+offset_right = 105.0
+offset_bottom = 1007.0
+icon = ExtResource("3_5njrj")
+flat = true
+script = SubResource("GDScript_blvi2")
+
+[node name="DisableAudio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 970.0
+offset_right = 456.0
+offset_bottom = 1007.0
+icon = ExtResource("4_bgkh2")
+flat = true
+
+[node name="TextBox" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 26.0
+offset_right = 692.0
+offset_bottom = 156.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kuq3")
+
+[node name="Content" type="Label" parent="TextBox"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 611.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xdte5")
+theme_override_font_sizes/font_size = 16
+text = "Apesar da influência social, os indivíduos possuem agência, ou seja, a capacidade de agir de forma independente e tomar decisões. A liberdade individual é a capacidade de expressar essa agência, desafiando ou reforçando as estruturas sociais existentes."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="TextBox2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 175.0
+offset_right = 692.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kuq3")
+
+[node name="Content" type="Label" parent="TextBox2"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 602.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xdte5")
+theme_override_font_sizes/font_size = 16
+text = "Incline o aparelho para guiar o rapaz pelo labirinto da vida. Ele encontra uma mulher, se forma na faculdade e tem filhos baseado no caminho que ele segue no labirinto."
+horizontal_alignment = 3
+autowrap_mode = 2
+justification_flags = 35
+clip_text = true
+
+[node name="Pagination" type="Label" parent="."]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 3.0
+offset_right = 764.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Pág. 4"
+
+[node name="MazeNode" parent="." instance=ExtResource("6_blvi2")]
+position = Vector2(-5, 318)
+
+[node name="TextBox2" type="Panel" parent="MazeNode"]
+offset_left = 95.0
+offset_top = 193.0
+offset_right = 705.0
+offset_bottom = 279.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kuq3")
+
+[node name="Message" type="Label" parent="MazeNode/TextBox2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29508197
+anchor_top = 2.2093024
+anchor_right = 0.295082
+anchor_bottom = 2.2093024
+offset_left = -63.0
+offset_top = -174.0
+offset_right = 309.0
+offset_bottom = -119.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "VOCE ESCOLHEU: XXXXX"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(11, 107)
+script = ExtResource("5_5njrj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(90, 363.99997)
+scale = Vector2(0.5833333, 0.5833333)
+texture = ExtResource("5_eblq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(90, 364)
+shape = SubResource("CircleShape2D_blvi2")
+
+[node name="Saidas" type="Node2D" parent="."]
+position = Vector2(481, 327)
+
+[node name="Area2D_Viagens" type="Area2D" parent="Saidas"]
+position = Vector2(206, 314)
+
+[node name="Viagens" type="Sprite2D" parent="Saidas/Area2D_Viagens"]
+position = Vector2(-22, 0)
+texture = ExtResource("8_xdte5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saidas/Area2D_Viagens"]
+position = Vector2(-31, 3)
+shape = SubResource("CircleShape2D_xdte5")
+
+[node name="Area2D_Familia" type="Area2D" parent="Saidas"]
+position = Vector2(-6, -13)
+
+[node name="Family" type="Sprite2D" parent="Saidas/Area2D_Familia"]
+position = Vector2(-6, -1)
+scale = Vector2(0.8117338, 0.7872154)
+texture = ExtResource("8_bgkh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saidas/Area2D_Familia"]
+position = Vector2(8, 15)
+shape = SubResource("CircleShape2D_xdte5")
+
+[node name="Area2D_Carreira" type="Area2D" parent="Saidas"]
+position = Vector2(64, 628)
+
+[node name="Carreira" type="Sprite2D" parent="Saidas/Area2D_Carreira"]
+position = Vector2(0, -3)
+scale = Vector2(0.8333333, 0.8333333)
+texture = ExtResource("10_5n6cl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saidas/Area2D_Carreira"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_xdte5")
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]
+[connection signal="pressed" from="PrevButton" to="PrevButton" method="_on_pressed"]
+[connection signal="body_entered" from="Saidas/Area2D_Viagens" to="CharacterBody2D" method="_on_area_2d_viagens_body_entered"]
+[connection signal="body_entered" from="Saidas/Area2D_Familia" to="CharacterBody2D" method="_on_area_2d_familia_body_entered"]
+[connection signal="body_entered" from="Saidas/Area2D_Carreira" to="CharacterBody2D" method="_on_area_2d_carreira_body_entered"]
