@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c1sg8d6sfpmle" path="res://assets/images/grupocriancas.png" id="3_b88r2"]
 [ext_resource type="Texture2D" uid="uid://24wl5mx3sdav" path="res://assets/images/btn_voltar.png" id="4_ari61"]
 [ext_resource type="Texture2D" uid="uid://he12nfo0vj1v" path="res://assets/images/desativar_audio.png" id="4_dy5hd"]
-[ext_resource type="PackedScene" uid="uid://cxjdjq0sffpn7" path="res://lixeira.tscn" id="4_v88ug"]
+[ext_resource type="PackedScene" uid="uid://cxjdjq0sffpn7" path="res://scenes/lixeira.tscn" id="4_v88ug"]
 [ext_resource type="FontFile" uid="uid://bg1l1wrq5jflu" path="res://assets/fonts/Lumanosimo-Regular.ttf" id="5_e5jb8"]
 [ext_resource type="Texture2D" uid="uid://bgb220vt5tmdp" path="res://assets/images/boy.png" id="5_rre4x"]
-[ext_resource type="PackedScene" uid="uid://33nud3iv5cjv" path="res://camiseta.tscn" id="6_bcfwf"]
-[ext_resource type="PackedScene" uid="uid://obv1l581un05" path="res://calca.tscn" id="6_ksih4"]
-[ext_resource type="PackedScene" uid="uid://dyhfidsb45dit" path="res://bone_drag.tscn" id="6_v88ug"]
+[ext_resource type="PackedScene" uid="uid://33nud3iv5cjv" path="res://scenes/camiseta.tscn" id="6_bcfwf"]
+[ext_resource type="PackedScene" uid="uid://obv1l581un05" path="res://scenes/calca.tscn" id="6_ksih4"]
+[ext_resource type="PackedScene" uid="uid://dyhfidsb45dit" path="res://scenes/bone_drag.tscn" id="6_v88ug"]
 
 [sub_resource type="GDScript" id="GDScript_63ehy"]
 resource_name = "Page2Script"
@@ -246,7 +246,7 @@ layout_mode = 0
 offset_left = 69.0
 offset_top = 257.0
 offset_right = 699.0
-offset_bottom = 335.0
+offset_bottom = 363.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hlm4o")
 
 [node name="Content" type="Label" parent="TextBox2"]
@@ -254,7 +254,7 @@ layout_mode = 0
 offset_left = 9.0
 offset_top = 1.0
 offset_right = 614.0
-offset_bottom = 78.0
+offset_bottom = 103.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_e5jb8")
 theme_override_font_sizes/font_size = 16
